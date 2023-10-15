@@ -9,7 +9,7 @@ public class EnemysController : MonoBehaviour
 {
     public Transform player;
     
-    private float distanceFollow = 6f, distancePerception = 15f, distanceAttack = 1.5f;
+    private float distanceFollow = 7f, distancePerception = 15f, distanceAttack = 1.5f;
 
     private float timeForAttack = 1.5f;
     private float distanceForPlayer, distanceForAIPoint;
@@ -52,7 +52,7 @@ public class EnemysController : MonoBehaviour
     {
         if (!followSomething)
         {
-            transform.position = Vector3.MoveTowards(transform.position, destinyRandow[AIPointCurrent].transform.position, 0.7f*Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, destinyRandow[AIPointCurrent].transform.position, 0.8f*Time.deltaTime);
             if (transform.position.Equals(destinyRandow[AIPointCurrent].transform.position))
             {
                 AIPointCurrent = Random.Range(0, destinyRandow.Length);
@@ -73,6 +73,6 @@ public class EnemysController : MonoBehaviour
 
     void Follow()
     {
-        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, 1.3f*Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, 1.5f*Time.deltaTime);
     }
 }
