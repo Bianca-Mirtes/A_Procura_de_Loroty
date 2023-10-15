@@ -8,6 +8,7 @@ TagManager:
   - ObjMovivel
   - entrada
   - saida
+  - arrow
   layers:
   - Default
   - TransparentFX

@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class ArrowShooterController : MonoBehaviour
 {
-    public Rigidbody2D arrow;
     public float speedArrow;
-    public Transform arrowPosition;
+    public GameObject arrow;
+    public Transform positionOrigin;
     private bool verifInit = false;
 
     private float timeBetween = 2f;
@@ -35,9 +35,8 @@ public class ArrowShooterController : MonoBehaviour
 
     public void Arrow()
     {
-        Rigidbody2D clone = Instantiate(arrow, arrowPosition.position, arrowPosition.localRotation);
-        clone.velocity = transform.right*speedArrow * Time.deltaTime;
-        Destroy(clone.gameObject, 5f);
+        GameObject clone = Instantiate(arrow, positionOrigin.position, Quaternion.identity);
+        Destroy(clone, 3.5f);
 
     }
 }

@@ -7,16 +7,18 @@ using static UnityEditor.Progress;
 public class playerController : MonoBehaviour
 {
     public float speed;
+
     private Rigidbody2D rb;
     private Transform box;
-
     private bool pegouObj=false;
-
     private int RoomCurrent;
+
+    private Animator ani;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        ani = GetComponent<Animator>();
     }
 
     void Update()
@@ -46,10 +48,20 @@ public class playerController : MonoBehaviour
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
+
         // right/left
         rb.velocity = new Vector3(speed * horizontal, rb.velocity.y, 0f);
         // top/down
         rb.velocity = new Vector3(rb.velocity.x, speed * vertical, 0f);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("arrow"))
+        {
+
+            FindObjectOfType<GameController>().DeadPlayer();
+        }
     }
 
     private void OnCollisionStay2D(Collision2D collision)
