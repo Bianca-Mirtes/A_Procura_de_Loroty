@@ -21,24 +21,14 @@ public class playerController : MonoBehaviour
         ani = GetComponent<Animator>();
     }
 
-    void Update()
-    {
-        /*if (Input.GetKey(KeyCode.LeftShift) && pegouObj)
-        {
-            box.parent = null;
-            //Rigidbody2D rbBox = collision.transform.AddComponent<Rigidbody2D>();
-            //rbBox.bodyType = RigidbodyType2D.Static;
-            pegouObj = false;
-        }*/
-
-    }
-
     // Update is called once per frame
     void FixedUpdate()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
+
+        //ani.SetBool("isWalking", true);
         // right/left
         rb.velocity = new Vector3(speed * horizontal, rb.velocity.y, 0f);
         // top/down
@@ -49,10 +39,12 @@ public class playerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("arrow"))
         {
+            ani.SetBool("isDead", true);
             FindObjectOfType<GameController>().DeadPlayer();
         }
         if (collision.gameObject.CompareTag("enemy"))
         {
+            ani.SetBool("isDead", true);
             FindObjectOfType<GameController>().DeadPlayer();
         }
         if (collision.gameObject.CompareTag("witcherV"))
@@ -61,6 +53,7 @@ public class playerController : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("witcherF"))
         {
+            ani.SetBool("isDead", true);
             FindObjectOfType<GameController>().DeadPlayer();
         }
     }
@@ -70,7 +63,7 @@ public class playerController : MonoBehaviour
         if (collision.gameObject.CompareTag("ObjMovivel"))
         {
             box = collision.gameObject.transform;
-            if (Input.GetKey(KeyCode.LeftShift) && !pegouObj)
+            if (Input.GetKey(KeyCode.LeftShift))
             {
                 pegouObj = true;
                 //collision.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
@@ -92,11 +85,11 @@ public class playerController : MonoBehaviour
                 }
                 collision.gameObject.transform.parent = transform;
             }
-            if (Input.GetKey(KeyCode.LeftShift) && pegouObj)
+            /*if (Input.GetKey(KeyCode.LeftShift) && pegouObj)
             {
                 collision.gameObject.transform.parent = null;
                 pegouObj = false;
-            }
+            }*/
         }
         if (collision.gameObject.CompareTag("trap"))
         {

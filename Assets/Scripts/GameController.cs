@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
     public static GameController instance = null;
+
+    public GameObject saida;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +21,11 @@ public class GameController : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
 
+    }
+
+    public void liberaSaida()
+    {
+        Destroy(saida);
     }
 
     public void DeadPlayer()
