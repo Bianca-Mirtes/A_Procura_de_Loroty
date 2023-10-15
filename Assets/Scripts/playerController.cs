@@ -55,9 +55,13 @@ public class playerController : MonoBehaviour
         {
             FindObjectOfType<GameController>().DeadPlayer();
         }
-        if (collision.gameObject.CompareTag("witcher"))
+        if (collision.gameObject.CompareTag("witcherV"))
         {
             FindObjectOfType<GameController>().LevelEnd();
+        }
+        if (collision.gameObject.CompareTag("witcherF"))
+        {
+            FindObjectOfType<GameController>().DeadPlayer();
         }
     }
 

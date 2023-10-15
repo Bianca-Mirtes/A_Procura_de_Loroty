@@ -11,7 +11,8 @@ TagManager:
   - arrow
   - trap
   - enemy
-  - witcher
+  - witcherV
+  - witcherF
   layers:
   - Default
   - TransparentFX
