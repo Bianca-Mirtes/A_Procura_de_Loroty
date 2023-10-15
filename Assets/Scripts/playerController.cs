@@ -11,7 +11,7 @@ public class playerController : MonoBehaviour
     private Rigidbody2D rb;
     private Transform box;
     private bool pegouObj=false;
-    private int RoomCurrent;
+    private int RoomCurrent = 0;
 
     private Animator ani;
     // Start is called before the first frame update
@@ -92,7 +92,7 @@ public class playerController : MonoBehaviour
                 }
                 collision.gameObject.transform.parent = transform;
             }
-            if (Input.GetKey(KeyCode.RightShift) && pegouObj)
+            if (Input.GetKey(KeyCode.LeftShift) && pegouObj)
             {
                 collision.gameObject.transform.parent = null;
                 pegouObj = false;

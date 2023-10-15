@@ -8,7 +8,11 @@ public class RoomsController : MonoBehaviour
 
     public void liberaRoom(int numRoom)
     {
-        escondeQuartos[numRoom-1].SetActive(false);
+        if(numRoom != 0)
+        {
+            escondeQuartos[numRoom-1].SetActive(false);
+        }
+
 
         if(numRoom == 2)
         {
@@ -21,7 +25,11 @@ public class RoomsController : MonoBehaviour
 
     public void escondeRoom(int numRoom)
     {
-        escondeQuartos[numRoom - 1].SetActive(true);
+        if(numRoom != 0)
+        {
+            escondeQuartos[numRoom - 1].SetActive(true);
+        }
+
         if (numRoom == 2)
         {
             foreach (ArrowShooterController arrow in FindObjectsByType<ArrowShooterController>(FindObjectsSortMode.None))
