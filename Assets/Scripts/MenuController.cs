@@ -51,12 +51,25 @@ public class MenuController : MonoBehaviour
             btnQuit = GameObject.Find("ExitBtn").GetComponent<Button>();
             btnQuit.onClick.AddListener(QuitGame);
         }
+        if(scene.name == "Vitoria")
+        {
+            btnReiniciar = GameObject.Find("ReiniciarBtn").GetComponent<Button>();
+            btnReiniciar.onClick.AddListener(Menu);
+            btnQuit = GameObject.Find("ExitBtn").GetComponent<Button>();
+            btnQuit.onClick.AddListener(QuitGame);
+        }
     }
 
     private void PlayGame()
     {
         string iniciarJogo = SceneUtility.GetScenePathByBuildIndex(2);
         SceneManager.LoadScene(iniciarJogo);
+    }
+
+    private void Menu()
+    {
+        string menu = SceneUtility.GetScenePathByBuildIndex(0);
+        SceneManager.LoadScene(menu);
     }
     public void QuitGame()
     {

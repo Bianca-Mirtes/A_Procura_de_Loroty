@@ -26,9 +26,15 @@ public class GameController : MonoBehaviour
        Invoke("GameOver", 2f);
     }
 
-    void GameOver()
+    private void GameOver()
     {
         string derrota = SceneUtility.GetScenePathByBuildIndex(1);
         SceneManager.LoadScene(derrota);
+    }
+
+    public void LevelEnd()
+    {
+        string vitoria = SceneUtility.GetScenePathByBuildIndex(3);
+        SceneManager.LoadScene(vitoria);
     }
 }

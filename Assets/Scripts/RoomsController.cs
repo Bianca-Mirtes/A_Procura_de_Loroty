@@ -22,5 +22,12 @@ public class RoomsController : MonoBehaviour
     public void escondeRoom(int numRoom)
     {
         escondeQuartos[numRoom - 1].SetActive(true);
+        if (numRoom == 2)
+        {
+            foreach (ArrowShooterController arrow in FindObjectsByType<ArrowShooterController>(FindObjectsSortMode.None))
+            {
+                arrow.setVerifInit(false);
+            }
+        }
     }
 }

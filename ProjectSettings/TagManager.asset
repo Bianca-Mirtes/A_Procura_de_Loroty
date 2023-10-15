@@ -9,6 +9,9 @@ TagManager:
   - entrada
   - saida
   - arrow
+  - trap
+  - enemy
+  - witcher
   layers:
   - Default
   - TransparentFX

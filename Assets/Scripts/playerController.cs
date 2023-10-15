@@ -23,16 +23,6 @@ public class playerController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Open"))
-        {
-            // abre portas, baús, armarios
-        }
-
-        if(Input.GetKey(KeyCode.E))
-        {
-            //interagir com os objetos do mapa
-        }
-
         /*if (Input.GetKey(KeyCode.LeftShift) && pegouObj)
         {
             box.parent = null;
@@ -59,8 +49,15 @@ public class playerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("arrow"))
         {
-
             FindObjectOfType<GameController>().DeadPlayer();
+        }
+        if (collision.gameObject.CompareTag("enemy"))
+        {
+            FindObjectOfType<GameController>().DeadPlayer();
+        }
+        if (collision.gameObject.CompareTag("witcher"))
+        {
+            FindObjectOfType<GameController>().LevelEnd();
         }
     }
 
@@ -95,6 +92,14 @@ public class playerController : MonoBehaviour
             {
                 collision.gameObject.transform.parent = null;
                 pegouObj = false;
+            }
+        }
+        if (collision.gameObject.CompareTag("trap"))
+        {
+            if (Input.GetKey(KeyCode.E))
+            {
+                //interagir com os objetos do mapa
+                FindObjectOfType<GameController>().DeadPlayer();
             }
         }
     }
